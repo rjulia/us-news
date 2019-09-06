@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.scss';
 import Avatar from '../Avatar/Avatar'
 
@@ -7,13 +8,10 @@ import Avatar from '../Avatar/Avatar'
 //   return name.chartAt(0)
 // }
 
-class Card extends React.Component {
-
-
-
+class NewsCard extends React.Component {
 
   render() {
-    const { news: { content, title, urlToImage, publishedAt, source: { name } } } = this.props;
+    const { news: { description, title, urlToImage, publishedAt, url, source: { name } } } = this.props;
 
     const firstLetter = name => {
       return name.charAt(0)
@@ -35,8 +33,8 @@ class Card extends React.Component {
               <img src={urlToImage} alt={title} />
             </div>
             <div className="card--body--content">
-              <h3>{title}</h3>
-              <p>{content}</p>
+              <a href={url} target="_blank" rel="noopener noreferrer"><h3>{title}</h3></a>
+              <p>{description}</p>
             </div>
           </div>
         </div>
@@ -45,4 +43,15 @@ class Card extends React.Component {
   }
 }
 
-export default Card
+NewsCard.propTypes = {
+  news: PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    urlToImage: PropTypes.string,
+    publishedAt: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    source: PropTypes.shape({ name: PropTypes.string.isRequired })
+  })
+};
+
+export default NewsCard

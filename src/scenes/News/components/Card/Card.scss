@@ -53,10 +53,16 @@
     padding: 20px;
     text-align: left;
 
+    a {
+      text-decoration: none;
+
+    }
+
     h3 {
       color: $card-title-color;
       font-size: 30px;
       font-weight: 500;
+      margin-top: 0;
     }
 
     p {

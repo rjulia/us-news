@@ -4,7 +4,7 @@ import uuidv4 from 'uuid/v4';
 import { connect } from 'react-redux';
 import './news.scss';
 
-import Card from './components/Card/Card';
+import Card from './components/Card/NewsCard';
 import Spinner from './components/Spinner/Spinner';
 
 const NewsList = ({ news: { articles } }) => {
