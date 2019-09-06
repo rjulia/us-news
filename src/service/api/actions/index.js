@@ -1,6 +1,6 @@
 // index.js
 
-import { FETCH_POST, IS_LOADING } from './types';
+import { FETCH_POST } from './types';
 import axios from 'axios';
 import { config } from '../../../config/keys'
 
@@ -21,7 +21,6 @@ export const getAllPosts = () => {
   return (dispatch) => {
     return axios.get(apiUrl)
       .then(response => {
-        console.log(response)
         dispatch(getPosts(response.data))
       })
       .catch(error => {

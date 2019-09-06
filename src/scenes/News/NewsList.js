@@ -8,7 +8,7 @@ import Card from './components/Card/Card';
 import Spinner from './components/Spinner/Spinner';
 
 const NewsList = ({ news: { articles } }) => {
-
+  console.log(articles)
   if (!articles) {
     return (
       <div className="news container">
