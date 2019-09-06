@@ -35,6 +35,10 @@ $card-description-color: $text-color;
 $tablet-width: 768px;
 $desktop-width: 1024px;
 
+// z-index
+$header-index: 100;
+
+// Mixins
 @mixin tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;

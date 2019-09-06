@@ -2,6 +2,10 @@
 
 .header {
   display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $header-index;
   height: $header-height;
   width: 100%;
   background-color: $header-background-color;
