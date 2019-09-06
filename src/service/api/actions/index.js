@@ -10,10 +10,10 @@ const apiUrl = config.apiUri;
 
 
 
-export const getPosts = (posts) => {
+export const getPosts = (news) => {
   return {
     type: FETCH_POST,
-    posts
+    news
   }
 };
 

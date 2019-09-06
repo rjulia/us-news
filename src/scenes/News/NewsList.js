@@ -1,29 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
+import uuidv4 from 'uuid/v4';
+
 import { connect } from 'react-redux';
 import './news.scss';
 
 import Card from './components/Card/Card';
+import Spinner from './components/Spinner/Spinner';
 
-class NewsList extends Component {
+const NewsList = ({ news: { articles } }) => {
 
-  render() {
-    const myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  if (!articles) {
     return (
       <div className="news container">
-        <div className="row">
-          {myArray.map((item) => (
-            <Card key={item} />
-          ))}
+        <div className="news--spinner">
+          <Spinner />
         </div>
       </div>
     )
   }
+
+  return (
+    <div className="news container">
+      <div className="row">
+        {articles.map((news) => (
+          <Card key={uuidv4()} news={news} />
+        ))}
+      </div>
+    </div>
+  )
+
 }
 
 const mapStateToProps = state => {
-  return {
-    posts: state.posts
-  };
+
+  return { news: state.news }
 };
 
 
