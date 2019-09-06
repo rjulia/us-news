@@ -1,0 +1,22 @@
+@import '../../../../scss/variables.scss';
+
+.avatar {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  background-color: $avatar-background-color;
+  border-radius: 50%;
+
+  p {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $avatar-background-text-color;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+  }
+}

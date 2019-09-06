@@ -1,0 +1,90 @@
+@import '../../../../scss/variables.scss';
+
+.card {
+  display: flex;
+  flex: 0 1 100%;
+  min-height: 200px;
+
+
+  &--container {
+    margin: 10px;
+    width: 100%;
+    box-shadow: 0 0 5px $card-shadow-color;
+  }
+
+  &--header {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 72px;
+  }
+
+  &--avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72px;
+    width: 72px;
+
+  }
+
+  &--header--content {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: calc(100% - 72px);
+    padding: 15px 0;
+    text-align: left;
+
+    p {
+      margin: 0 0 5px 0;
+    }
+  }
+
+
+  &--body--img {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &--body--content {
+    padding: 20px;
+    text-align: left;
+
+    h3 {
+      color: $card-title-color;
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    p {
+      color: $card-description-color;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+
+  @include tablet {
+    display: flex;
+    flex: 0 1 50%;
+    min-height: 200px;
+  }
+
+  @include desktop {
+    display: flex;
+    flex: 0 1 33.3333333%;
+    min-height: 200px;
+
+    &--body--content {
+
+      h3 {
+        font-size: 24px;
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,48 @@
+@import '../../scss/variables.scss';
+
+.header {
+  display: block;
+  height: $header-height;
+  width: 100%;
+  background-color: $header-background-color;
+  font-size: 18px;
+
+  &--container {
+    display: flex;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include tablet {
+    &--container {
+      padding: 0 25px;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  @include desktop {
+    font-size: 20px;
+  }
+}
+
+.logo {
+  color: $header-text;
+  font-size: 1.4rem;
+  font-weight: 700;
+  width: 40%;
+
+  @include tablet {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  @include desktop {
+    width: 100%;
+    font-size: 20px;
+  }
+}

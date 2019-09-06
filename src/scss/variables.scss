@@ -1,0 +1,48 @@
+$shadow-color: rgba(0, 0, 0, 0.2);
+$brand-color: #3c3b63;
+$detail-color: #bdbdbd;
+$detail-text-color: #fafafa;
+$text-color: rgba(0, 0, 0, 0.54);
+$title-color: rgba(0, 0, 0, 0.87);
+$white: #fff;
+
+// Header
+$header-height: 65px;
+$header-background-color: $brand-color;
+$header-text: $white;
+
+
+// Search
+$search-background-color: rgba($white, 0.15);
+$search-color: $white;
+$search-placeholder-color: rgba($white, 0.42);
+
+
+// Card
+// Avatar
+$avatar-background-color: $detail-color;
+$avatar-background-text-color: $detail-text-color;
+$avatar-text-color: $title-color;
+$avatar-date-color: $text-color;
+
+// Card body
+$card-shadow-color: $shadow-color;
+$card-title-color: $title-color;
+$card-description-color: $text-color;
+
+// Media Queries
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

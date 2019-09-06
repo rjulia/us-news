@@ -1,0 +1,44 @@
+@import '../../../../scss/variables.scss';
+
+.search {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 60%;
+
+  &--input {
+    height: 35px;
+    width: 100%;
+    padding-left: 35px;
+    font-size: 18px;
+    background-color: $search-background-color;
+    color: $search-color;
+    border-radius: 4px;
+    border: 0;
+
+    &::placeholder {
+      margin-right: 10px;
+      font-size: 18px;
+      color: $search-placeholder-color;
+    }
+  }
+
+  &--icon {
+    position: absolute;
+    margin-left: 10px;
+    color: $white;
+  }
+
+  @include tablet {
+    font-size: 18px;
+  }
+
+  @include desktop {
+    &--input {
+      height: 35px;
+      min-width: 215px;
+      padding-left: 55px;
+      font-size: 18px;
+    }
+  }
+}
