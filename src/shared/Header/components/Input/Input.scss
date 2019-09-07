@@ -4,7 +4,8 @@
   display: flex;
   position: relative;
   align-items: center;
-  width: 60%;
+  width: calc(50% - 20px);
+  margin-right: 20px;
 
   &--input {
     height: 35px;
@@ -30,7 +31,12 @@
   }
 
   @include tablet {
+    width: calc(40% - 20px);
     font-size: 18px;
+
+    &--input {
+      width: calc(100% - 50px)
+    }
   }
 
   @include desktop {
