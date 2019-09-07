@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+
 import './Card.scss';
 import Avatar from '../Avatar/Avatar'
-
-// const getAvatar = (name) => {
-//   console.log(name)
-//   return name.chartAt(0)
-// }
 
 class NewsCard extends React.Component {
 
@@ -25,7 +22,7 @@ class NewsCard extends React.Component {
             </div>
             <div className="card--header--content">
               <p>{name}</p>
-              <p>{publishedAt}</p>
+              <p>{moment(publishedAt).format('MMMM Do YYYY, h:mm:ss a')}</p>
             </div>
           </div>
           <div className="card--body">

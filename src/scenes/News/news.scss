@@ -3,6 +3,7 @@
 .news {
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
 
   .row {
     display: flex;
@@ -17,7 +18,7 @@
 .news--spinner {
   position: relative;
   width: 100%;
-  height: calc(100vh - #{$header-height});
+  // height: calc(100vh - #{$header-height});
 
   .lds-ripple {
     margin: 0;
@@ -25,5 +26,23 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%)
+  }
+}
+
+.news--alert {
+  display: block;
+  flex: 1 1 100%;
+  text-align: center;
+
+  p {
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: $alert-color;
+    color: $white;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+
   }
 }

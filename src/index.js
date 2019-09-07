@@ -7,13 +7,12 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import rootReducer from './service/api/reducers/index';
-import { getAllPosts } from './service/api/actions/index';
+import rootReducer from './state/reducers/index';
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-store.dispatch(getAllPosts());
+//store.dispatch(getAllPosts(15));
 
 ReactDOM.render(
   <Provider store={store}>
