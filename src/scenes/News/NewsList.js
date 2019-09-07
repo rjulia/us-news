@@ -18,7 +18,9 @@ const NewsList = ({ posts, loading, onGetAllPosts }) => {
 
 
   useEffect(() => {
-    onGetAllPosts(numberOfPage)
+    console.log("handell onGetAllPosts")
+
+    debounce(() => onGetAllPosts(numberOfPage), 500)()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -29,8 +31,8 @@ const NewsList = ({ posts, loading, onGetAllPosts }) => {
   }, [isFetching]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', debounce((handleScroll), 400));
+    return () => window.removeEventListener('scroll', debounce((handleScroll), 400));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
