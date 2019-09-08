@@ -1,6 +1,6 @@
 // index.js
 
-import { GET_POSTS, POST_LOADING } from './types';
+import { GET_POSTS, LOADING_POSTS, SEARCH_SONGS } from './types';
 import axios from 'axios';
 import { config } from '../../../../config/keys'
 import moment from 'moment';
@@ -20,17 +20,42 @@ export const loadPosts = (posts) => {
   }
 };
 
+export const searchPosts = (posts) => {
+  return {
+    type: SEARCH_SONGS,
+    payload: posts.articles
+  }
+};
+
 
 export const getAllPosts = numberPage => dispatch => {
   dispatch(setPostLoading());
+  // axios
+  //   .get(url + `&pageSize=10&page=${numberPage}`)
+  //   .then(res => {
+  //     dispatch(loadPosts(res.data))
+  //   })
+  //   .catch(error => {
+  //     dispatch({
+  //       type: GET_POSTS,
+  //       payload: null
+  //     })
+  //   });
+
+};
+
+export const searchAllPosts = ({ query, numberPage }) => dispatch => {
+  dispatch(setPostLoading());
+  console.log(query, numberPage)
   axios
-    .get(url + `&pageSize=10&page=${numberPage}`)
+    .get(url + `&q=${query}&pageSize=10&page=${numberPage}`)
     .then(res => {
-      dispatch(loadPosts(res.data))
+      console.log(res.data)
+      dispatch(searchPosts(res.data))
     })
     .catch(error => {
       dispatch({
-        type: GET_POSTS,
+        type: SEARCH_SONGS,
         payload: null
       })
     });
@@ -40,6 +65,6 @@ export const getAllPosts = numberPage => dispatch => {
 
 export const setPostLoading = () => {
   return {
-    type: POST_LOADING
+    type: LOADING_POSTS
   };
 };

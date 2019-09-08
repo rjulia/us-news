@@ -16,10 +16,7 @@ const NewsList = ({ posts, loading, onGetAllPosts }) => {
   const [hasMore, setHasMore] = useState(true);
 
 
-
   useEffect(() => {
-    console.log("handell onGetAllPosts")
-
     debounce(() => onGetAllPosts(numberOfPage), 500)()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

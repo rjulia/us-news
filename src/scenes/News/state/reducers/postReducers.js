@@ -1,4 +1,4 @@
-import { GET_POSTS, POST_LOADING } from '../actions/types';
+import { GET_POSTS, LOADING_POSTS, SEARCH_SONGS } from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -7,7 +7,7 @@ const initialState = {
 }
 export default function postReducer(state = initialState, action) {
   switch (action.type) {
-    case POST_LOADING:
+    case LOADING_POSTS:
       return {
         ...state,
         loading: true
@@ -18,6 +18,12 @@ export default function postReducer(state = initialState, action) {
         posts: [...state.posts, ...action.payload],
         loading: false
       };
+    case SEARCH_SONGS:
+      return {
+        ...state,
+        posts: action.payload,
+        loading: false
+      }
     default:
       return state;
   }
