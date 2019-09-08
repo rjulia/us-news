@@ -1,6 +1,6 @@
 // index.js
 
-import { GET_POSTS, LOADING_POSTS, SEARCH_POSTS, NO_POSTS } from './types';
+import { GET_POSTS, LOADING_POSTS, SEARCH_POSTS, CLEAN_POSTS } from './types';
 import axios from 'axios';
 import { config } from '../../../../config/keys'
 import moment from 'moment';
@@ -27,10 +27,9 @@ export const searchPosts = (posts) => {
   }
 };
 
-export const noResults = () => {
+export const cleanPost = () => {
   return {
-    type: NO_POSTS,
-    payload: false
+    type: CLEAN_POSTS
   }
 };
 
@@ -53,24 +52,22 @@ export const getAllPosts = numberPage => dispatch => {
 
 export const searchAllPosts = query => dispatch => {
   dispatch(setPostLoading());
-  console.log(query)
-  axios
-    .get(url + `&q=${query}&pageSize=10&page=1}`)
-    .then(res => {
-      if (query === '') {
-        dispatch(getAllPosts(1))
-      } else {
+  if (query === '') {
+    dispatch(cleanPost())
+    dispatch(getAllPosts(1))
+  } else {
+    axios
+      .get(url + `&q=${query}&pageSize=10&page=1}`)
+      .then(res => {
         dispatch(searchPosts(res.data))
-      }
-
-    })
-    .catch(error => {
-      dispatch({
-        type: SEARCH_POSTS,
-        payload: null
       })
-    });
-
+      .catch(error => {
+        dispatch({
+          type: SEARCH_POSTS,
+          payload: null
+        })
+      });
+  }
 };
 
 

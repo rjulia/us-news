@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.scss';
 import Input from "../components/SearchInput/SearchInput";
 import { connect } from 'react-redux';
@@ -7,12 +7,18 @@ import { searchAllPosts } from '../../../pages/News/state/actions';
 
 const Header = ({ onSearchAllPosts }) => {
 
-  let timeout;
-  const handleSearch = (txt) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(function () {
-      onSearchAllPosts(txt)
+  const [searchTxt, setSearchTxt] = useState('');
+
+  useEffect(() => {
+    let timeout = setTimeout(function () {
+      onSearchAllPosts(searchTxt)
     }, 800)
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTxt])
+
+  const handleSearch = (txt) => {
+    setSearchTxt(txt)
   };
 
   return (
@@ -22,7 +28,7 @@ const Header = ({ onSearchAllPosts }) => {
           <span>US News</span>
         </div>
         <Input
-          //value={searchTxt}
+          value={searchTxt}
           onChange={handleSearch}
         />
       </div>

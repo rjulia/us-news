@@ -76,7 +76,6 @@ const NewsList = ({ posts, loading, onGetAllPosts, noResult, isSearching }) => {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     loading: state.posts.loading,
     posts: state.posts.posts,
