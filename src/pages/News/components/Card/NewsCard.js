@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-
+import addDefaultSrc from '../../../../assets/images/noimage.gif'
 import './Card.scss';
 import Avatar from '../Avatar/Avatar'
 
@@ -9,10 +9,10 @@ class NewsCard extends React.Component {
 
   render() {
     const { news: { description, title, urlToImage, publishedAt, url, source: { name } } } = this.props;
-
     const firstLetter = name => {
       return name.charAt(0)
     }
+
     return (
       <div className="card">
         <div className="card--container">
@@ -27,7 +27,7 @@ class NewsCard extends React.Component {
           </div>
           <div className="card--body">
             <div className="card--body--img">
-              <img src={urlToImage} alt={title} />
+              <img onError={this.addDefaultSrc} src={urlToImage !== null ? urlToImage : addDefaultSrc} alt={title} />
             </div>
             <div className="card--body--content">
               <a href={url} target="_blank" rel="noopener noreferrer"><h3>{title}</h3></a>

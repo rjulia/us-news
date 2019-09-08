@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import Header from './shared/Header/Header';
-import NewsList from './scenes/News/NewsList';
-import {Helmet} from 'react-helmet'
+import Header from './shared/Header/layout/Header';
+import NewsList from './pages/News/layout/NewsList';
+import { Helmet } from 'react-helmet'
 
 function App() {
   return (

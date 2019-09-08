@@ -30,17 +30,17 @@ export const searchPosts = (posts) => {
 
 export const getAllPosts = numberPage => dispatch => {
   dispatch(setPostLoading());
-  // axios
-  //   .get(url + `&pageSize=10&page=${numberPage}`)
-  //   .then(res => {
-  //     dispatch(loadPosts(res.data))
-  //   })
-  //   .catch(error => {
-  //     dispatch({
-  //       type: GET_POSTS,
-  //       payload: null
-  //     })
-  //   });
+  axios
+    .get(url + `&pageSize=10&page=${numberPage}`)
+    .then(res => {
+      dispatch(loadPosts(res.data))
+    })
+    .catch(error => {
+      dispatch({
+        type: GET_POSTS,
+        payload: null
+      })
+    });
 
 };
 

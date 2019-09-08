@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import uuidv4 from 'uuid/v4';
 import debounce from "lodash.debounce";
 import { connect } from 'react-redux';
-import { getAllPosts } from './state/actions';
+import { getAllPosts } from '../state/actions';
 import './news.scss';
 
-import Card from './components/Card/NewsCard';
-import Spinner from './components/Spinner/Spinner';
+import Card from '../components/Card/NewsCard';
+import Spinner from '../components/Spinner/Spinner';
 
 const NewsList = ({ posts, loading, onGetAllPosts }) => {
 
@@ -47,6 +47,8 @@ const NewsList = ({ posts, loading, onGetAllPosts }) => {
       setIsFetching(false);
     }
   }
+
+
 
   return (
     <div className="news container">

@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import './Header.scss';
-import Input from "./components/Input/Input";
+import Input from "../components/SearchInput/SearchInput";
 import debounce from "lodash.debounce";
 
 import { connect } from 'react-redux';
 
-import { searchAllPosts } from '../../scenes/News/state/actions';
+import { searchAllPosts } from '../../../pages/News/state/actions';
 
 const Header = ({ onSearchAllPosts }) => {
 
-  const [searchTxt, setSearchTxt] = useState('new york');
+  const [searchTxt, setSearchTxt] = useState('');
+
 
   useEffect(() => {
-    debounce(() => onSearchAllPosts({
-      query: searchTxt,
-      numberPage: 100
-    }), 500)()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    let timeout = setTimeout(function () {
+      onSearchAllPosts({
+        query: searchTxt,
+        numberPage: 10
+      })
+    }, 800)
+    return () => clearTimeout(timeout);
+  }, [searchTxt, onSearchAllPosts]);
+
+  const handleSearch = (txt) => {
+    setSearchTxt(txt)
+  };
 
   return (
     <div className='header'>
@@ -25,7 +32,10 @@ const Header = ({ onSearchAllPosts }) => {
         <div className="logo">
           <span>US News</span>
         </div>
-        <Input />
+        <Input
+          value={searchTxt}
+          onChange={handleSearch}
+        />
       </div>
     </div>
   )
