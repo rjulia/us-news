@@ -1,6 +1,6 @@
 // index.js
 
-import { GET_POSTS, LOADING_POSTS, SEARCH_SONGS } from './types';
+import { GET_POSTS, LOADING_POSTS, SEARCH_POSTS, NO_POSTS } from './types';
 import axios from 'axios';
 import { config } from '../../../../config/keys'
 import moment from 'moment';
@@ -22,8 +22,15 @@ export const loadPosts = (posts) => {
 
 export const searchPosts = (posts) => {
   return {
-    type: SEARCH_SONGS,
+    type: SEARCH_POSTS,
     payload: posts.articles
+  }
+};
+
+export const noResults = () => {
+  return {
+    type: NO_POSTS,
+    payload: false
   }
 };
 
@@ -44,18 +51,22 @@ export const getAllPosts = numberPage => dispatch => {
 
 };
 
-export const searchAllPosts = ({ query, numberPage }) => dispatch => {
+export const searchAllPosts = query => dispatch => {
   dispatch(setPostLoading());
-  console.log(query, numberPage)
+  console.log(query)
   axios
-    .get(url + `&q=${query}&pageSize=10&page=${numberPage}`)
+    .get(url + `&q=${query}&pageSize=10&page=1}`)
     .then(res => {
-      console.log(res.data)
-      dispatch(searchPosts(res.data))
+      if (query === '') {
+        dispatch(getAllPosts(1))
+      } else {
+        dispatch(searchPosts(res.data))
+      }
+
     })
     .catch(error => {
       dispatch({
-        type: SEARCH_SONGS,
+        type: SEARCH_POSTS,
         payload: null
       })
     });

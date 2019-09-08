@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Header.scss';
 import Input from "../components/SearchInput/SearchInput";
-import debounce from "lodash.debounce";
-
 import { connect } from 'react-redux';
-
 import { searchAllPosts } from '../../../pages/News/state/actions';
+
 
 const Header = ({ onSearchAllPosts }) => {
 
-  const [searchTxt, setSearchTxt] = useState('');
-
-
-  useEffect(() => {
-    let timeout = setTimeout(function () {
-      onSearchAllPosts({
-        query: searchTxt,
-        numberPage: 10
-      })
-    }, 800)
-    return () => clearTimeout(timeout);
-  }, [searchTxt, onSearchAllPosts]);
-
+  let timeout;
   const handleSearch = (txt) => {
-    setSearchTxt(txt)
+    clearTimeout(timeout)
+    timeout = setTimeout(function () {
+      onSearchAllPosts(txt)
+    }, 800)
   };
 
   return (
@@ -33,7 +22,7 @@ const Header = ({ onSearchAllPosts }) => {
           <span>US News</span>
         </div>
         <Input
-          value={searchTxt}
+          //value={searchTxt}
           onChange={handleSearch}
         />
       </div>
@@ -42,7 +31,7 @@ const Header = ({ onSearchAllPosts }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onSearchAllPosts: params => dispatch(searchAllPosts(params))
+  onSearchAllPosts: query => dispatch(searchAllPosts(query)),
 })
 
 export default connect(

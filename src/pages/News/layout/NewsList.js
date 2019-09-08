@@ -8,9 +8,7 @@ import './news.scss';
 import Card from '../components/Card/NewsCard';
 import Spinner from '../components/Spinner/Spinner';
 
-const NewsList = ({ posts, loading, onGetAllPosts }) => {
-
-
+const NewsList = ({ posts, loading, onGetAllPosts, noResult, isSearching }) => {
   const [isFetching, setIsFetching] = useState(loading);
   const [numberOfPage, setNumberOfPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -22,7 +20,7 @@ const NewsList = ({ posts, loading, onGetAllPosts }) => {
   }, []);
 
   useEffect(() => {
-    if (!isFetching) return;
+    if (!isFetching || isSearching) return;
     handleLoadMore(posts);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFetching]);
@@ -56,15 +54,20 @@ const NewsList = ({ posts, loading, onGetAllPosts }) => {
         {posts.map((news) => (
           <Card key={uuidv4()} news={news} />
         ))}
-        {loading && <div className="news container">
-          <div className="news--spinner">
-            <Spinner />
-          </div>
-        </div>}
         {!hasMore && <div className="news--alert">
           <p>
             No more articles
          </p>
+        </div>}
+        {noResult && <div className="news--alert">
+          <p>
+            There are no results, try it with another word.
+         </p>
+        </div>}
+        {loading && <div className="news container">
+          <div className="news--spinner">
+            <Spinner />
+          </div>
         </div>}
       </div>
     </div>
@@ -73,9 +76,12 @@ const NewsList = ({ posts, loading, onGetAllPosts }) => {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     loading: state.posts.loading,
-    posts: state.posts.posts
+    posts: state.posts.posts,
+    noResult: state.posts.noResult,
+    isSearching: state.posts.isSearching
   }
 };
 
