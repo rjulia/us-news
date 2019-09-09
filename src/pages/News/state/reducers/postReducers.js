@@ -20,7 +20,6 @@ export default function postReducer(state = initialState, action) {
         posts: []
       }
     case SEARCH_POSTS:
-      console.log('hello songs serach')
       return {
         ...state,
         posts: action.payload,
@@ -29,7 +28,6 @@ export default function postReducer(state = initialState, action) {
         loading: false
       }
     case GET_POSTS:
-      console.log('hello songs Get')
       return {
         ...state,
         posts: [...state.posts, ...action.payload],

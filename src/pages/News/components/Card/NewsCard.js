@@ -9,6 +9,7 @@ class NewsCard extends React.Component {
 
   render() {
     const { news: { description, title, urlToImage, publishedAt, url, source: { name } } } = this.props;
+    const date = `${moment(publishedAt).format('l')} ${moment(publishedAt).format('LT')}`
     const firstLetter = name => {
       return name.charAt(0)
     }
@@ -21,8 +22,8 @@ class NewsCard extends React.Component {
               <Avatar letter={firstLetter(name)} />
             </div>
             <div className="card--header--content">
-              <p>{name}</p>
-              <p>{moment(publishedAt).format('MMMM Do YYYY, h:mm:ss a')}</p>
+              <h4>{name}</h4>
+              <p className="card--date">{date}</p>
             </div>
           </div>
           <div className="card--body">

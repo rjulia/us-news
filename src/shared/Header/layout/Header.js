@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import './Header.scss';
 import Input from "../components/SearchInput/SearchInput";
 import { connect } from 'react-redux';
 import { searchAllPosts } from '../../../pages/News/state/actions';
-
 
 const Header = ({ onSearchAllPosts }) => {
 
@@ -40,8 +40,12 @@ const mapDispatchToProps = dispatch => ({
   onSearchAllPosts: query => dispatch(searchAllPosts(query)),
 })
 
+Header.propTypes = {
+  onSearchAllPosts: PropTypes.func.isRequired,
+};
+
 export default connect(
   null,
   mapDispatchToProps
 )(Header);
-;
+

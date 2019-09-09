@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SearchInput.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
-const Input = ({ value, onChange, searching }) => {
+const SearchInput = ({ value, onChange }) => {
   return (
     <div className="search">
       <FontAwesomeIcon icon={faSearch} className="search--icon" />
@@ -18,4 +18,9 @@ const Input = ({ value, onChange, searching }) => {
   )
 }
 
-export default Input
+SearchInput.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
+export default SearchInput

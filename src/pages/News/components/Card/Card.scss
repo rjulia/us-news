@@ -36,11 +36,16 @@
     padding: 15px 0;
     text-align: left;
 
-    p {
+    p,
+    h4 {
       margin: 0 0 5px 0;
+      font-size: 14px
     }
   }
 
+  &--date {
+    font-size: 12px;
+  }
 
   &--body--img {
     img {
