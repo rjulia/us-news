@@ -1,0 +1,29 @@
+@import '../../scss/variables.scss';
+
+.button--plus {
+  display: block;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto;
+  background-color: $button-primary-background-color;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &--icon {
+    position: absolute;
+    font-size: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $button-primary-color;
+  }
+
+  @include tablet {
+    display: block;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}

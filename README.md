@@ -7,6 +7,8 @@ I wouldn't normally leave my credentials in the repository so but did it now so 
 I just show 10 news at first, you can scroll until see 100 news, after that, the application report you, no more news.
 Can not make Pixel Perfect becouse it is not provided PDS fiel, Sketch or InVision
 
+I deploy the project in Firebase, https://us-news-87289.web.app/
+
 
 ## Available Scripts
 
@@ -16,9 +18,6 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
 ### `npm test`
 

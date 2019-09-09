@@ -1,9 +1,18 @@
 @import '../../../scss/variables.scss';
 
+.sizes {
+  position: fixed;
+  background-color: darkcyan;
+  z-index: 100000;
+  top: 100px;
+  left: 0;
+}
+
 .news {
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
+  position: relative;
 
   .row {
     display: flex;
@@ -47,4 +56,14 @@
     text-transform: uppercase;
 
   }
+}
+
+.news--add-news {
+  display: block;
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  text-align: center;
+  margin-top: 50px;
+  width: 100%;
 }

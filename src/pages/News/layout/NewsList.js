@@ -7,7 +7,8 @@ import debounce from "lodash.debounce";
 import { connect } from 'react-redux';
 import { getAllPosts } from '../state/actions';
 import Card from '../components/Card/NewsCard';
-import Spinner from '../../../shared/Spinner/Spinner'
+import Spinner from '../../../shared/Spinner/Spinner';
+import Button from '../../../shared/Buttoon/Button';
 
 const NewsList = ({ posts, loading, onGetAllPosts, noResult, isSearching }) => {
   const [isFetching, setIsFetching] = useState(loading);
@@ -15,7 +16,7 @@ const NewsList = ({ posts, loading, onGetAllPosts, noResult, isSearching }) => {
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    debounce(() => onGetAllPosts(numberOfPage), 500)()
+    onGetAllPosts(numberOfPage)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -23,7 +24,7 @@ const NewsList = ({ posts, loading, onGetAllPosts, noResult, isSearching }) => {
     if (!isFetching || isSearching) return;
     handleLoadMore(posts);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFetching]);
+  }, [isFetching, isSearching]);
 
   useEffect(() => {
     window.addEventListener('scroll', debounce((handleScroll), 400));
@@ -45,6 +46,8 @@ const NewsList = ({ posts, loading, onGetAllPosts, noResult, isSearching }) => {
       setIsFetching(false);
     }
   }
+
+
 
   return (
     <Fragment>
@@ -75,6 +78,11 @@ const NewsList = ({ posts, loading, onGetAllPosts, noResult, isSearching }) => {
               <Spinner />
             </div>
           </div>}
+          {hasMore && !loading ?
+            <div className="news--add-news">
+              <Button handleClick={() => handleLoadMore(posts)} />
+            </div> : ''
+          }
         </div>
       </div>
     </Fragment>
