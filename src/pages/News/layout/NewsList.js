@@ -7,7 +7,7 @@ import debounce from "lodash.debounce";
 import { connect } from 'react-redux';
 import { getAllPosts } from '../state/actions';
 import Card from '../components/Card/NewsCard';
-import Spinner from '../components/Spinner/Spinner';
+import Spinner from '../../../shared/Spinner/Spinner'
 
 const NewsList = ({ posts, loading, onGetAllPosts, noResult, isSearching }) => {
   const [isFetching, setIsFetching] = useState(loading);
