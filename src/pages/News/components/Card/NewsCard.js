@@ -5,7 +5,7 @@ import addDefaultSrc from '../../../../assets/images/noimage.gif'
 import './Card.scss';
 import Avatar from '../Avatar/Avatar'
 
-class NewsCard extends React.Component {
+class NewsCard extends React.PureComponent {
 
   render() {
     const { news: { description, title, urlToImage, publishedAt, url, source: { name } } } = this.props;
